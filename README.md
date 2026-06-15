@@ -40,7 +40,7 @@ The project prices a capped structured note and computes its Greeks (Delta and V
 ## Requirements
 
 - MATLAB R2021a or later
-- Financial Toolbox (for `blkprice`, `yearfrac`, `bootstrap`)
+- Financial Toolbox (for `blkprice`, `yearfrac`, `bootstrap`), Curve Fitting Toolbox.
 
 ## Usage
 
@@ -52,14 +52,4 @@ RunAssignment
 
 The script prints the upfront fee *X*, DV01 tables and hedge notionals to the console, and generates plots for the Delta and Vega hedge results.
 
-## Methods
 
-| Component | Approach |
-|---|---|
-| Curve bootstrapping | Piecewise-constant instantaneous forward rates |
-| Cap pricing | Black-76 (flat vol surface) |
-| LMM calibration | Bucket bootstrapping + `fzero` root-finding |
-| Spot-vol interpolation | Linear in reset time between consecutive pillars |
-| Delta computation | Parallel bump of individual bootstrap instruments (+1 bp) |
-| Vega computation | Parallel bump of flat volatility surface (+1 vol point) |
-| Hedging | Linear system inversion (`A \ b`) |
